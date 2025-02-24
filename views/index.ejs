@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(0,0, 27);
+            color: white;
+        }
+        table {
+            width: 40%;
+            border-collapse: collapse;
+            margin: 20px auto 0 auto; 
+        }
+        th { 
+            padding: 8px;
+            background-color: rgb(5, 175, 175);
+            color: rgb(221, 221, 220);
+        }
+        td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+        h1 {
+            text-align: center;
+        }
+        h1, table {
+            margin-bottom: 20px;
+        }
+        a {
+            text-decoration: none;
+            color: black;
+        }
+        a:hover {
+            color: blue;
+        }
+        button{
+            padding: 5px 10px;
+            background-color: rgb(5, 175, 175);
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: rgb(3, 155, 155);
+        }
+        form{
+            width: 40%;
+            margin: 20px auto 0 auto;
+            text-align: left;
+        }
+        form input{
+            width: 100%;;
+            padding: 5px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: .2px solid rgba(0, 0, 0, 0.248);
+            padding: 15px 10px;
+            border-radius: 6px;
+            margin: 15px 0;
+
+        }
+        form button{
+            padding: 10px 5px;
+            border-radius: 25px; 
+            width: 150px;
+        }
+        @media (min-width:700px) {
+            form,table{
+                width: 60%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Cadastre-se aqui...</h1>
+    <form action="/Cliente/novo" method="post">
+       <p>
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" id="nome" placeholder="Digite seu nome">
+       </p>
+       <p>
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" placeholder="Digite seu email">
+       </p>
+        
+        <p>
+        <label for="senha">Senha:</label>
+        <input type="password" name="senha" id="senha" placeholder="Digite sua senha">
+        </p>
+        <button type="submit">Cadastrar</button>
+    </form>
+    <table>
+        <thead>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>&nbsp</th> 
+            <th>&nbsp</th> 
+        </thead>
+        <tbody> 
+               <% clientes.forEach(cliente=>{%>
+                <tr>
+                    <td><%= cliente.nome %></td>
+                    <td><%= cliente.email %></td>
+                    <td><a href="editar.html"><button>Editar</button></a></td>
+                    <td><a href="/cliente/excluir/<%= cliente.id %>"><button>Excluir</a></td>
+                </tr>
+               <%})%> 
+        </tbody>
+    </table>
+ 
+</body>
+</html>
